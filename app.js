@@ -1,6 +1,6 @@
 let textbox = document.getElementById("textbox")
 
-var expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+var expression = /^((https|http)?:\/\/(?:www\.)?instagram\.com(\/[A-Za-z0-9_@./#&+-]*)?\/(p|tv|reel|stories)\/([^/?#&]+)).*/;
 var regex = new RegExp(expression);
 
 var type = "";
@@ -13,10 +13,13 @@ var buttonClicked = false;
 
 let loader = document.getElementById("loading")
 
+let submit = document.getElementById("submit")
+
 document.getElementById("submit").addEventListener("click", () => {
         if (textbox.value != "") {
             if (textbox.value.length > 13 ){
-              show()
+              show();
+              
               if (textbox.value.match(regex)) {
                 const options = {
                   method: 'GET',
@@ -33,7 +36,6 @@ document.getElementById("submit").addEventListener("click", () => {
                 })
                 
                 .then((data) => {
-                  console.log(data)
                   hidee();
                   type = data.Type;
               
@@ -82,8 +84,6 @@ document.getElementById("submit").addEventListener("click", () => {
                   
                               a.href = data.media[i]+"&dl=1";
                   
-                              a.target = "_blank"
-                  
                               document.getElementById('body1').appendChild(br);
                               document.getElementById('body1').appendChild(a);
                               document.getElementById('body1').appendChild(br1)
@@ -99,7 +99,6 @@ document.getElementById("submit").addEventListener("click", () => {
                           a.href = data.media+"&dl=1";
                           console.log(data.media)
                           a.download = data.media+"&dl=1";
-                          a.target = "_blank";
                           document.getElementById('body1').appendChild(br1);
                           document.getElementById('body1').appendChild(a);
                           document.getElementById('body1').appendChild(br);
@@ -107,6 +106,7 @@ document.getElementById("submit").addEventListener("click", () => {
                   }) 
                 } else {
                   hidee();
+                  
                   alert("Please Enter A valid URL")
               }
 
@@ -119,10 +119,12 @@ document.getElementById("submit").addEventListener("click", () => {
 })
 
 function show() {
+  submit.disabled = true;
   loader.style.visibility = "visible"
   loader.style.display = "block"
 }
 function hidee() {
   loader.style.visibility = "hidden"
   loader.style.display = "none"
+  submit.disabled = false;
 }
