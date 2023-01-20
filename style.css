@@ -1,0 +1,83 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(2, 2, 2);
+    font-family: 'Inter', sans-serif;
+}
+
+hr {
+    width: 99.6%;
+    color: rgb(2, 2, 2);
+}
+
+center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.body1 {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    border: 1px solid rgb(2, 2, 2);
+    
+}
+.textbox {
+    height: 25px;
+    width: 98.5%;
+    text-align: center;
+    border: 2px solid rgb(255, 44, 44);
+}
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+background-color: #3e8e41;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* css loader hidden */
+
+#loading {
+    width: 2rem;
+    height: 2rem;
+    border: 5px solid #f3f3f3;
+    border-top: 6px solid #9c41f2;
+    border-radius: 100%;
+    margin: auto;
+    visibility: hidden;
+    animation: spin 1s infinite linear;
+    display: none;
+}
+
+/* #loading.display {
+    visibility: visible;
+} */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
