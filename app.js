@@ -34,11 +34,11 @@ document.getElementById("submit").addEventListener("click", () => {
                 .then((response) => {
                   return response.json();
                 })
-                
                 .then((data) => {
+                  console.log(data)
                   hidee();
                   type = data.Type;
-              
+                  
                   switch (type) {
                       case "Post-Video":
                         type = "mp4";
@@ -55,7 +55,7 @@ document.getElementById("submit").addEventListener("click", () => {
                     }
                     
                     textbox.value = "";
-  
+                    
                     const result = Array.isArray(data.media)
   
                     if (buttonClicked = true ) {
@@ -77,9 +77,9 @@ document.getElementById("submit").addEventListener("click", () => {
                               var btn = document.createElement('button');
                   
                               btn.innerHTML = `Download ${i+1}`;
-                  
+                              btn.id = "downloadbtn";
                               a.appendChild(btn);
-                  
+
                               a.download = data.media[i]+"&dl=1";
                   
                               a.href = data.media[i]+"&dl=1";
@@ -94,11 +94,14 @@ document.getElementById("submit").addEventListener("click", () => {
                           let br1 = document.createElement('br')
                           var a = document.createElement('a');
                           var btn = document.createElement('button');
+
                           btn.innerHTML = "Download";
                           a.appendChild(btn);
-                          a.href = data.media+"&dl=1";
-                          console.log(data.media)
+
                           a.download = data.media+"&dl=1";
+                          
+                          a.href = data.media+"&dl=1";
+
                           document.getElementById('body1').appendChild(br1);
                           document.getElementById('body1').appendChild(a);
                           document.getElementById('body1').appendChild(br);
@@ -107,7 +110,7 @@ document.getElementById("submit").addEventListener("click", () => {
                 } else {
                   hidee();
                   
-                  alert("Please Enter A valid URL")
+                  alert("Please Enter A valid INSTAGRAM URL")
               }
 
             } else {
@@ -128,3 +131,22 @@ function hidee() {
   loader.style.display = "none"
   submit.disabled = false;
 }
+
+if(top!=self){ top.location.replace(document.location); alert("SMTECHYT NOT ALLOWED MAKE FRAMIMG ,[Framing is Not Allowed ],Click OK to Open Original Link")}
+
+
+if (localStorage.getItem("visited") === null) { 
+    document.getElementById("container").style.display = "block";
+    localStorage.setItem("visited", true);
+  }else {
+    document.getElementById("container").style.display = "none"; 
+}
+
+
+document.getElementById("close").addEventListener("click", function() {
+  document.getElementById("container").style.display = "none";
+});
+
+document.getElementById("accept").addEventListener("click", function() {
+  window.open("https://www.instagram.com/subhashis_op/")
+});
